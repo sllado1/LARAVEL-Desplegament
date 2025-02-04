@@ -176,6 +176,9 @@ php artisan event:cache
 # Millora l'eficiència de les rutes
 php artisan route:cache
 
+# Enllaç simbòlic a storage
+php artisan storage:link
+
 ```
 
 
