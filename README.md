@@ -107,7 +107,8 @@ php ../composer.phar install
 ```
 
 ### Redirigir la pàgina
-El projecte ha d'estar en una carpeta diferent de www.
+El projecte s'ha de posar a la carpeta www i en aquest s'ha de posar un fitxer .htaccess amb el contingut següent:
+
 ```sh
 RewriteEngine On
 RewriteCond %{REQUEST_URI} !^/public/
@@ -151,13 +152,10 @@ php artisan cache:clear
 php artisan auth:clear-resets
 
 # Neteja la caché de les rutes
-php artisan route:cache
+php artisan route:clear
 
 # Neteja la caché de les configuracions. Molt important si s'ha canviat el fitxer .env
-php artisan config:cache
-
-# Neteja la caché de les vistes
-php artisan view:cache
+php artisan config:clear
 
 # Instal·la les dependències de NodeJs
 npm install
