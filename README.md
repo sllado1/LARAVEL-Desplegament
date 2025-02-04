@@ -131,7 +131,52 @@ Comprova la versió node
 ```sh
 node -v
 ```
+## Desplegament d'una aplicació Laravel
+```sh
+# Instal·la o actualitza les dependències
+composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+# Crear el fitxer .env
+# APP_DEBUG = false   Per no exposar informació sensible.
 
+# Migracions de la base de dades
+php artisan migrate --force
+#  Aplica només les migracions pendents.
+#  No demana confirmació i s'executa directament.
+#  Segur en producció si les migracions estan correctament preparades.
+
+# Neteja de caches
+php artisan cache:clear
+
+# Neteja els tokens expirats de la base de dades
+php artisan auth:clear-resets
+
+# Neteja la caché de les rutes
+php artisan route:cache
+
+# Neteja la caché de les configuracions. Molt important si s'ha canviat el fitxer .env
+php artisan config:cache
+
+# Neteja la caché de les vistes
+php artisan view:cache
+
+# Instal·la les dependències de NodeJs
+npm install
+
+# Compila el VUE
+npm run build
+
+# Combina els fitxers de configuració en un de sol
+php artisan config:cache
+## ULL! Si executeu l'ordre config:cache durant el vostre procés de desplegament, haureu d'assegurar-vos que només esteu cridant la funció env. Un cop s'hagi guardat la configuració a la memòria cau,
+## el fitxer .env no es carregarà i totes les crides a la funció env per a les variables .env tornaran nul·les.
+
+# Emmagatzema events
+php artisan event:cache
+
+# Millora l'eficiència de les rutes
+php artisan route:cache
+
+```
 
 
 
