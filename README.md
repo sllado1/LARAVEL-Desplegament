@@ -57,15 +57,14 @@ Aquesta tècnica és més fiable que eines com FTP o SCP, ja que:
 
 - Garanteix que tots els fitxers modificats siguin publicats.
 - Permet executar processos abans i després de la publicació (còpies de seguretat, aturar serveis, actualitzar dependències...).
-1️⃣ Crear un Hook post-receive
+###1️ Crear un Hook post-receive
 Accedim al directori del repositori:
 
-sh
-Copiar
-Editar
-$ cd /var/www/vhost/videoclub.daw/repositoris/videoclub.git
+```sh
+$ cd /laravel/repositoris/projecte.git
 $ cd hooks
-A la carpeta hooks hi ha scripts que Git executarà en moments clau. Crearem l’script post-receive:
+```
+A la carpeta hooks hi ha scripts que Git executarà en moments clau. Crearem l’script **post-receive**:
 
 sh
 Copiar
