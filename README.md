@@ -9,57 +9,54 @@ Podem utilitzar el nostre servidor per allotjar repositoris privats i fins i tot
 Primer de tot, hem d’accedir al nostre servidor:  
 
 ```sh
-$ ssh videoclub@m08.daw
+$ ssh totmaquinacendrassos@totmaquinacendrassos.cat
 ```
 Un cop haguem accedit, cal crear una carpeta on col·locar els repositoris:
 
 ```sh
 
 $ cd
-$ mkdir repositori
-$ cd repositori
-$ mkdir videoclub.git  # Acabar la carpeta amb .git és una convenció.
-$ cd videoclub.git
+$ mkdir repositoris
+$ cd repositoris
+$ mkdir projecte.git  # Acabar la carpeta amb .git és una convenció.
+$ cd projecte.git
 ```
 Ara inicialitzarem un repositori GIT en aquesta carpeta. Com que no utilitzarem la carpeta per treballar, crearem un repositori del tipus bare. Aquests repositoris no tenen directori de treball i només s'hi pot interactuar amb git push o git pull.
 
-sh
-Copiar
-Editar
+```sh
 $ git init --bare
+```
+
 Ja hem creat un repositori privat en el nostre servidor.
 
-🔹 Connectar el nostre repositori local al repositori privat
+## 🔹 Connectar el nostre repositori local al repositori privat
 Per vincular el nostre repositori local amb el repositori privat del servidor, haurem de definir un remot.
 
-Primer, obtenim el path fins al nostre repositori en el servidor:
+Primer, obtenim el path fins al nostre repositori dins del servidor (Això ho farem al servidor):
 
-sh
-Copiar
-Editar
+```sh
 $ pwd
-/var/www/vhost/videoclub.daw/repositoris/videoclub.git
+```
+##### /home/totmaquinacendrassos/laravel/repositoris/projecte.git
+
 Ara afegirem un remot en el nostre repositori local:
 
-sh
-Copiar
-Editar
-(màquina local) $ git remote add web videoclub@m08.daw:/var/www/vhost/videoclub.daw/repositori/videoclub.git
+```sh
+git remote add web ssh://totmaquinacendrassos@totmaquinacendrassos.cat/home/totmaquinacendrassos/laravel/repositoris/projecte.git
+```
 Per comprovar si hem configurat bé el remot:
 
-sh
-Copiar
-Editar
-(màquina local) $ git push web main
-🔹 Publicar utilitzant Git
+```sh
+git remote -v
+```
+
+##🔹 Publicar utilitzant Git
 Podem utilitzar el nostre repositori remot i els hooks de Git per automatitzar el procés de publicació.
-
 Aquest mètode és útil per projectes petits o per projectes que requereixin un control precís del procés de publicació.
-
 Aquesta tècnica és més fiable que eines com FTP o SCP, ja que:
 
-Garanteix que tots els fitxers modificats siguin publicats.
-Permet executar processos abans i després de la publicació (còpies de seguretat, aturar serveis, actualitzar dependències...).
+- Garanteix que tots els fitxers modificats siguin publicats.
+- Permet executar processos abans i després de la publicació (còpies de seguretat, aturar serveis, actualitzar dependències...).
 1️⃣ Crear un Hook post-receive
 Accedim al directori del repositori:
 
