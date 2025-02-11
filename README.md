@@ -122,9 +122,9 @@ __Què fa aquestes línies de codi a un fitxer .htaccess__
 
 Aquesta regla .htaccess redirigeix totes les peticions que no van a la carpeta **/public/** cap a aquesta carpeta.
 - `RewriteEngine On`: Activa el motor de reescriptura d'Apache.
-- `RewriteCond %{REQUEST_URI} !^/public/`: Aquesta condició comprova que la URI sol·licitada no comenci amb /public/.
+- `RewriteCond %{REQUEST_URI} !^/public/`: Aquesta condició comprova que la URL sol·licitada no comenci amb /public/.
      - `RewriteCond`: Aquesta directiva s'utilitza per definir una condició que ha de complir-se perquè s'apliqui una regla de reescriptura posterior (en aquest cas, la regla RewriteRule que vèiem abans). Només quan la condició és certa, es processarà la regla associada.
-     - `%{REQUEST_URI}` és una variable que conté la part de la URL que segueix al domini. Per exemple, si l'usuari accedeix a http://www.exemple.com/about, el valor de %{REQUEST_URI} serà /about.
+     - `%{REQUEST_URI}` és una variable que conté la part de la URL que segueix al domini. Per exemple, si l'usuari accedeix a `http://www.exemple.com/usuaris`, el valor de `%{REQUEST_URI}` serà `/usuaris`.
      - `!^/public/`: El /public/ és la part de la URL que busquem. Si la URI comença amb /public/, aquesta condició no s'aplicaria.
           -`!`: Aquest símbol és un negatiu. En una expressió regular, significa "no coincideix".
           -`^/public/`: Això és una expressió regular que vol dir "comença amb /public/".
