@@ -121,19 +121,19 @@ Els fitxers .htaccess faciliten el canvi de configuració de l'Apache a nivell d
 __Què fa aquestes línies de codi a un fitxer .htaccess__
 
 Aquesta regla .htaccess redirigeix totes les peticions que no van a la carpeta **/public/** cap a aquesta carpeta.
-- _RewriteEngine On_: Activa el motor de reescriptura d'Apache.
-- RewriteCond %{REQUEST_URI} !^/public/: Aquesta condició comprova que la URI sol·licitada no comenci amb /public/.
-     - RewriteCond: Aquesta directiva s'utilitza per definir una condició que ha de complir-se perquè s'apliqui una regla de reescriptura posterior (en aquest cas, la regla RewriteRule que vèiem abans). Només quan la condició és certa, es processarà la regla associada.
-     - %{REQUEST_URI} és una variable que conté la part de la URL que segueix al domini. Per exemple, si l'usuari accedeix a http://www.exemple.com/about, el valor de %{REQUEST_URI} serà /about.
-     - !^/public/: El /public/ és la part de la URL que busquem. Si la URI comença amb /public/, aquesta condició no s'aplicaria.
-          -!: Aquest símbol és un negatiu. En una expressió regular, significa "no coincideix".
-          -^/public/: Això és una expressió regular que vol dir "comença amb /public/".
-- RewriteRule ^(.*)$ /public/$1 [L]: Redirecciona a la mateixa ruta, però afegint public al davant.
-     - ^(.*)$ és una expressió regular que captura tota l'URL (sense considerar el domini, només el camí de l'URL).
+- `RewriteEngine On`: Activa el motor de reescriptura d'Apache.
+- `RewriteCond %{REQUEST_URI} !^/public/`: Aquesta condició comprova que la URI sol·licitada no comenci amb /public/.
+     - `RewriteCond`: Aquesta directiva s'utilitza per definir una condició que ha de complir-se perquè s'apliqui una regla de reescriptura posterior (en aquest cas, la regla RewriteRule que vèiem abans). Només quan la condició és certa, es processarà la regla associada.
+     - `%{REQUEST_URI}` és una variable que conté la part de la URL que segueix al domini. Per exemple, si l'usuari accedeix a http://www.exemple.com/about, el valor de %{REQUEST_URI} serà /about.
+     - `!^/public/`: El /public/ és la part de la URL que busquem. Si la URI comença amb /public/, aquesta condició no s'aplicaria.
+          -`!`: Aquest símbol és un negatiu. En una expressió regular, significa "no coincideix".
+          -`^/public/`: Això és una expressió regular que vol dir "comença amb /public/".
+- `RewriteRule ^(.*)$ /public/$1 [L]`: Redirecciona a la mateixa ruta, però afegint public al davant.
+     - `^(.*)$` és una expressió regular que captura tota l'URL (sense considerar el domini, només el camí de l'URL).
      - Si l'usuari accedeix a /abc/def, $1 serà abc/def, i la redirecció serà a /public/abc/def.
-     - L]: Aquest és un "flag" que indica que si aquesta regla es compleix, no s'hauran d'executar més regles de reescriptura. Si aquesta regla redirigeix la petició, el servidor no processarà cap altra regla .htaccess posterior, fins i tot si hi ha més regles definides.
+     - `[L]`: Aquest és un "flag" que indica que si aquesta regla es compleix, no s'hauran d'executar més regles de reescriptura. Si aquesta regla redirigeix la petició, el servidor no processarà cap altra regla .htaccess posterior, fins i tot si hi ha més regles definides.
 *Exemple*
-Si l'usuari accedeix a la ruta /usuaris  serà redirigit a /public/usuaris  
+Si l'usuari accedeix a la ruta `/usuaris`  serà redirigit a `/public/usuaris`  
 
 ### Activar Let’s Encrypt
 [Guia oficial](https://dinahosting.com/ayuda/como-activo-lets-encrypt-en-mi-hosting/)
