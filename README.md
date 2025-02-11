@@ -141,7 +141,7 @@ Si l'usuari accedeix a la ruta `/usuaris`  serà redirigit a `/public/usuaris`
 ### Treballar amb NPM
 
 #### Instal·lar Node 20 
-
+:warning: Perquè el servidor pugui tenir instal·lat npm cal que s'hagi fet una migració al hosting Professional Passenger. En altres paraules, s'ha d'haver fet una migració a un servidor Passenger. 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
 source ~/.bashrc
@@ -154,7 +154,7 @@ node -v
 ```
 ## Desplegament d'una aplicació Laravel
 ```sh
-# Instal·la o actualitza les dependències
+# Instal·la o actualitza les dependències. Si no s'han posat dependències noves no cal.
 composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 # Crear el fitxer .env
 # APP_DEBUG = false   Per no exposar informació sensible.
@@ -177,7 +177,7 @@ php artisan route:clear
 # Neteja la caché de les configuracions. Molt important si s'ha canviat el fitxer .env
 php artisan config:clear
 
-# Instal·la les dependències de NodeJs
+# Instal·la les dependències de NodeJs. Si no s'han posat depències noves no cal.
 npm install
 
 # Compila el VUE
