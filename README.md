@@ -58,7 +58,7 @@ Aquesta tècnica és més fiable que eines com FTP o SCP, ja que:
 - Garanteix que tots els fitxers modificats siguin publicats.
 - Permet executar processos abans i després de la publicació (còpies de seguretat, aturar serveis, actualitzar dependències...).
 
-###1️ - Crear un Hook post-receive
+### 1️ - Crear un Hook post-receive
 Accedim al directori del repositori:
 
 ```sh
@@ -100,8 +100,8 @@ done
 Hosting → Servidor → PHP
 
 ### Afegir dependències amb Composer
-Com instal·lar [composer al servidor] (https://dinahosting.com/ayuda/que-es-y-como-instalo-composer-en-mi-hosting/).
-Per instal·lar el composer i les dependències:
+Com instal·lar [composer al servidor](https://dinahosting.com/ayuda/que-es-y-como-instalo-composer-en-mi-hosting/).
+Per instal·lar les dependències del projecte:
 
 ```sh
 php ../composer.phar install
@@ -117,9 +117,11 @@ RewriteCond %{REQUEST_URI} !^/public/
 RewriteRule ^(.*)$ /public/$1 [L]
 ```
 Els fitxers .htaccess faciliten el canvi de configuració de l'Apache a nivell de carpeta. Aquests fitxers només s'han d'utilitzar quan no es té accés a la configuració principal. Per tant, és el seu ús és comu en proveïdors de hosting, on a cada servidor hi ha varis dominis allotjats, i no es té accés a la configuració.
-_Què fa aquestes línies de codi a un fitxer .htaccess_
+
+__Què fa aquestes línies de codi a un fitxer .htaccess__
+
 Aquesta regla .htaccess redirigeix totes les peticions que no van a la carpeta **/public/** cap a aquesta carpeta.
-- RewriteEngine On: Activa el motor de reescriptura d'Apache.
+- _RewriteEngine On_: Activa el motor de reescriptura d'Apache.
 - RewriteCond %{REQUEST_URI} !^/public/: Aquesta condició comprova que la URI sol·licitada no comenci amb /public/.
      - RewriteCond: Aquesta directiva s'utilitza per definir una condició que ha de complir-se perquè s'apliqui una regla de reescriptura posterior (en aquest cas, la regla RewriteRule que vèiem abans). Només quan la condició és certa, es processarà la regla associada.
      - %{REQUEST_URI} és una variable que conté la part de la URL que segueix al domini. Per exemple, si l'usuari accedeix a http://www.exemple.com/about, el valor de %{REQUEST_URI} serà /about.
