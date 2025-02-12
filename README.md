@@ -163,6 +163,8 @@ alias php=$ruta_versio
 # A partir d'aquí ja es poden posar totes les comandes indicades a continuació.
 ```
 ```sh
+# Posa el laravel en mode manteniment
+php artisan down
 # Instal·la o actualitza les dependències. Si no s'han posat dependències noves no cal.
 composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 # Crear el fitxer .env
@@ -204,7 +206,11 @@ php artisan event:cache
 php artisan route:cache
 
 # Enllaç simbòlic a storage
+php artisan storage:unlink
 php artisan storage:link
+
+# Treu el laravel del mode manteniment
+php artisan up
 
 ```
 
