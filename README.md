@@ -153,6 +153,15 @@ Comprova la versió node
 node -v
 ```
 ## Desplegament d'una aplicació Laravel
+⚠️ En el hosting com que hi ha instal·lades diferents versions de php, la visualització de la web i la línia de comandes s'executa amb la versió PHP8.4, però les comandes cridades 
+des d'un script s'executen amb la versió PHP7.4.
+Per solucionar això abans d'executar les comandes per desplegar laravel que utilitzen php artisan, cal posar les següents línies
+```sh
+#Obtenir la ruta del php
+ruta_versio=$(which php84)
+update-alternatives --set php /usr/bin/php8.0 $ruta_versio
+# A partir d'aquí ja es poden posar totes les comandes indicades a continuació.
+```
 ```sh
 # Instal·la o actualitza les dependències. Si no s'han posat dependències noves no cal.
 composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
@@ -185,7 +194,7 @@ npm run build
 
 # Combina els fitxers de configuració en un de sol
 php artisan config:cache
-## ULL! Si executeu l'ordre config:cache durant el vostre procés de desplegament, haureu d'assegurar-vos que només esteu cridant la funció env. Un cop s'hagi guardat la configuració a la memòria cau,
+##⚠️ Si executeu l'ordre config:cache durant el vostre procés de desplegament, haureu d'assegurar-vos que només esteu cridant la funció env. Un cop s'hagi guardat la configuració a la memòria cau,
 ## el fitxer .env no es carregarà i totes les crides a la funció env per a les variables .env tornaran nul·les.
 
 # Emmagatzema events
