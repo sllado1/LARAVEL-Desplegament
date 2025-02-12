@@ -159,7 +159,7 @@ Per solucionar això abans d'executar les comandes per desplegar laravel que uti
 ```sh
 #Obtenir la ruta del php
 ruta_versio=$(which php84)
-update-alternatives --set php /usr/bin/php8.0 $ruta_versio
+alias php=$ruta_versio
 # A partir d'aquí ja es poden posar totes les comandes indicades a continuació.
 ```
 ```sh
